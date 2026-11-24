@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+@theme {
+      --color-cream: #ffffe3;
+      --color-panel-gray: #cbcbcb;
+      --color-ink: #4a4a4a;
+      --color-butter: #ffea99;
+      --font-display: "Lilita One", sans-serif;
+}
+
+body{ 
+      height: 90vh
+}
