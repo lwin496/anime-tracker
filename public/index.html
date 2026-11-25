@@ -8,35 +8,38 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap">
 </head>
 <body class="bg-white font-display text-xl text-ink">
-      <main class="flex flex-col mx-auto my-20 border-3 rounded-3xl p-10 max-w-6/10 justify-center bg-cream">
+      <main class="flex flex-col mx-auto my-20 border-3 rounded-4xl p-4 sm:p-10 w-[calc(100%-2rem)] max-w-3xl justify-center bg-cream">
             <h1 class="text-4xl mb-5">Anime Tracker</h1>
             <!-- top section -->
-            <section class="bg-panel-gray border-3 rounded-3xl p-5 mb-5">
+            <section class="bg-panel-gray border-3 rounded-4xl p-5 mb-5">
                   <h2 class="text-3xl pb-10">Add a show</h2>
-                  <form action="" id="add-show-form" class="flex justify-between items-center">
-                        <div class="flex flex-col">
+                  <form action="" id="add-show-form" class="flex flex-col gap-4 md:flex-row md:items-end">
+                        <div class="flex flex-col min-w-0 md:flex-1">
                               <label for="show-title">Anime Title</label>
-                              <input type="text" id="show-title" name="title" required class="border-3 rounded-3xl p-5 bg-panel-gray w-120" placeholder="e.g. Frieren">
+                              <input type="text" id="show-title" name="title" required class="border-3 rounded-4xl p-5 bg-panel-gray w-full" placeholder="e.g. Frieren">
                         </div>
-                        <div class="flex flex-col">
+                        <div class="flex flex-col md:w-44">
                               <label for="show-satus">Status</label>
-                              <select name="top-status" id="top-status" class="border-3 rounded-3xl p-5 w-70">
+                              <select name="status" id="status" class="border-3 rounded-4xl p-5 w-full show-select">
                                     <option value="watching">Watching</option>
                                     <option value="plan-to-watch">Plan to watch</option>
                                     <option value="finished">Finished</option>
                               </select>
                              
                         </div>
-                        <button type="submit" class="rounded-3xl border-3 bg-butter p-5">+ Add Show</button>
+                        <button type="submit" class="rounded-4xl border-3 bg-butter whitespace-nowrap px-4 py-2 shrink-0 h-20 w-fit" id="show-submit">
+                              + Add Show
+                        </button>
                   </form>
         
             </section>
             <!-- middle section -->
-            <section class="flex mb-5 justify-between items-center">
+            <section class="flex justify-between items-center flex-col gap-3 sm:flex-row sm:items-center">
                   <h1 class="text-3xl">My shows</h1>
                   <div class="flex flex-row">
-                        <h2 class="flex items-center px-5">filter</h2>
-                        <select name="middle-status" id="middle-status" class="border-3 rounded-3xl bg-panel-gray p-5">
+                        <h2 class="flex items-center px-5 text-2xl">filter</h2>
+                        <select name="middle-status" id="middle-status" class="border-3 rounded-4xl bg-panel-gray p-5 w-full show-select">
+                              <option value="all">All statuses</option>
                               <option value="watching">Watching</option>
                               <option value="plan-to-watch">Plan to watch</option>
                               <option value="finished">Finished</option>
@@ -48,22 +51,15 @@
              <section>
                   <!-- card -->
                    <ul id="show-list">
-                        <li class="flex justify-between border-3 rounded-3xl p-10 mt-2 items-center">
-                              <h3 class="text-3xl">Anime Name</h3>
-                              <select name="card-status" id="card-status" class="border-3 rounded-3xl p-4 bg-panel-gray w-60">
+                        <li class="flex sm:flex-row sm:items-center sm:justify-between justify-between border-3 rounded-4xl p-4 sm:p-10 mt-2 items-center">
+                              <h3 class="text-xl sm:text-3xl">Anime Name</h3>
+                              <select name="card-status" id="card-status" class="border-3 rounded-4xl p-4 bg-panel-gray w-full md:w-70 show-select">
                                     <option value="watching">Watching</option>
                                     <option value="plan-to-watch">Plan to watch</option>
                                     <option value="finished">Finished</option>
                               </select>
                         </li>
-                        <li class="flex justify-between border-3 rounded-3xl p-10 mt-2 items-center">
-                              <h3 class="text-3xl">Anime Name</h3>
-                              <select name="card-status" id="card-status" class="border-3 rounded-3xl p-4 bg-panel-gray w-60">
-                                    <option value="watching">Watching</option>
-                                    <option value="plan-to-watch">Plan to watch</option>
-                                    <option value="finished">Finished</option>
-                              </select>
-                        </li>
+                        
                   </ul>
 
              </section>
