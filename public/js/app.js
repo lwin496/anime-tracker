@@ -11,7 +11,7 @@ const setup = async () =>{
       const statusFilter = document.getElementById('middle-status')
 
       const renderFilteredShows = () =>{ 
-             const selectedStatus = statusFilter.value
+            const selectedStatus = statusFilter.value
             if(selectedStatus === 'all'){ 
                   renderShows(shows)
                   return
