@@ -6,18 +6,17 @@ const showList = document.getElementById('show-list')
 const setup = async () =>{ 
       const response = await fetch('/api/shows')
       const shows = await response.json()
-      renderShows(shows)
 
       const statusFilter = document.getElementById('middle-status')
 
       const renderFilteredShows = () =>{ 
             const selectedStatus = statusFilter.value
-            if(selectedStatus === 'all'){ 
-                  renderShows(shows)
+            if(selectedStatus === 'show-all'){ 
+                  renderShows(shows, deleteShow)
                   return
             }
             const filtered = shows.filter(show => show.status === selectedStatus)
-            renderShows(filtered)
+            renderShows(filtered, deleteShow)
       }
 
       statusFilter.addEventListener('change', renderFilteredShows)
@@ -55,11 +54,32 @@ const setup = async () =>{
             shows.push(newShow)
            
       })
+
+      const deleteShow = async (id) =>{ 
+            try{ 
+                  const response = await fetch(`/api/shows/${id}` ,{ 
+                        method: 'DELETE'
+                  })
+                  
+                  if(!response.ok){ 
+                        throw new Error(`Delete failed (${response.status})`)
+                  }
+                  const index = shows.findIndex(show => show.id === id)
+                  if(index !== -1) shows.splice(index, 1)
+                  renderFilteredShows()
+            }catch(err){ 
+                  console.error(err)
+                  alert('couldnt delete show')
+            }
+
+
+      }
+      renderFilteredShows()
 }
 
 
 
-const renderShows = (showsToRender) =>{ 
+const renderShows = (showsToRender, onDelete) =>{ 
       showList.replaceChildren()
 
 
@@ -83,6 +103,13 @@ const renderShows = (showsToRender) =>{
             const finishedOption = document.createElement('option')
             finishedOption.value = 'finished'
             finishedOption.textContent = 'finished'
+
+            const deleteButton = document.createElement('button')
+            deleteButton.className = 'rounded-4xl border-3 bg-red-400 whitespace-nowrap px-4 py-2 shrink-0 h-20 w-fit hover:bg-red-600 transition-colors'
+            deleteButton.type = 'button'
+            deleteButton.textContent = 'Delete'
+            deleteButton.addEventListener('click',()=> onDelete(show.id))
+
 
             
             cardStatus.append(watchingOption, planToWatchOption, finishedOption)
@@ -110,7 +137,7 @@ const renderShows = (showsToRender) =>{
             })
            
 
-            card.append(cardTitle,cardStatus)
+            card.append(cardTitle,cardStatus, deleteButton)
             showList.append(card)
       }
 } 

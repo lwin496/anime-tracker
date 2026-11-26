@@ -13,11 +13,6 @@ const shows = [
 {id: 1, title: 'bleach', status: 'watching'},
 {id: 2, title: 'naruto', status: 'plan-to-watch'},
 {id: 3, title: 'one piece', status: 'watching'},
-{id: 4, title: 'frieren', status: 'plan-to-watch'},
-{id: 5, title: 'd-grayman', status: 'finished'},
-{id: 6, title: 'ranma', status: 'plan-to-watch'},
-{id: 7, title: 'bleach', status: 'finished'},
-{id: 8, title: 'bleach', status: 'plan-to-watch'},
 ]
 
 
@@ -44,6 +39,16 @@ app.post('/api/shows', (req, res)=>{
 
       shows.push(show)
       res.status(201).json(show)
+})
+
+
+app.delete('/api/shows/:id', (req,res) =>{
+      const index = shows.findIndex(show => String(show.id) === req.params.id)
+      if(index === -1){ 
+            return res.status(404).json({error: 'show not found'})
+      }
+      shows.splice(index, 1)
+      res.sendStatus(204)
 })
 
 

@@ -20,18 +20,17 @@
                         </div>
                         <div class="flex flex-col md:w-44">
                               <label for="show-satus">Status</label>
-                              <select name="status" id="status" class="border-3 rounded-4xl p-5 w-full show-select">
+                              <select name="top-status" id="top-status" class="border-3 rounded-4xl p-5 w-full show-select">
                                     <option value="watching">Watching</option>
                                     <option value="plan-to-watch">Plan to watch</option>
                                     <option value="finished">Finished</option>
                               </select>
                              
                         </div>
-                        <button type="submit" class="rounded-4xl border-3 bg-butter whitespace-nowrap px-4 py-2 shrink-0 h-20 w-fit" id="show-submit">
+                        <button type="submit" class="rounded-4xl border-3 bg-butter whitespace-nowrap px-4 py-2 shrink-0 h-20 w-fit hover:bg-[#f5d76e] transition-colors">
                               + Add Show
                         </button>
                   </form>
-        
             </section>
             <!-- middle section -->
             <section class="flex justify-between items-center flex-col gap-3 sm:flex-row sm:items-center">
@@ -39,7 +38,7 @@
                   <div class="flex flex-row">
                         <h2 class="flex items-center px-5 text-2xl">filter</h2>
                         <select name="middle-status" id="middle-status" class="border-3 rounded-4xl bg-panel-gray p-5 w-full show-select">
-                              <option value="all">All statuses</option>
+                              <option value="show-all">All options</option>
                               <option value="watching">Watching</option>
                               <option value="plan-to-watch">Plan to watch</option>
                               <option value="finished">Finished</option>
@@ -59,7 +58,14 @@
                                     <option value="finished">Finished</option>
                               </select>
                         </li>
-                        
+                        <li class="flex sm:flex-row sm:items-center sm:justify-between justify-between border-3 rounded-4xl p-4 sm:p-10 mt-2 items-center">
+                              <h3 class="text-xl sm:text-3xl">Anime Name</h3>
+                              <select name="card-status" id="card-status" class="border-3 rounded-4xl p-4 bg-panel-gray w-full md:w-70 show-select">
+                                    <option value="watching">Watching</option>
+                                    <option value="plan-to-watch">Plan to watch</option>
+                                    <option value="finished">Finished</option>
+                              </select>
+                        </li>
                   </ul>
 
              </section>
